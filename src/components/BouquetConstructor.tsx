@@ -49,14 +49,13 @@ const BouquetConstructor = () => {
   };
 
   const generateSchemes = () => {
-    const schemes = [];
-    for (let i = 0; i < 3; i++) {
-      schemes.push({
-        id: i,
-        flowers: selectedFlowers,
-        pattern: `Схема ${i + 1}`
-      });
-    }
+    const schemeTypes = ['compact', 'asymmetric', 'cascade'] as const;
+    const schemes = schemeTypes.map((type, i) => ({
+      id: i,
+      flowers: selectedFlowers,
+      pattern: `Схема ${i + 1}`,
+      type
+    }));
     setGeneratedSchemes(schemes);
     setSelectedScheme(0);
   };
